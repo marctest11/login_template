@@ -40,6 +40,7 @@ const handleLogin = async (event) => {
   const password = event.target.querySelector('input[name="password"]').value;
 
   if (eid === "11111" && password === "password") {
+<<<<<<< HEAD
     // const response = await fetch("../cal_pmt.html");
     let calculatorTemplate = "";
     try {
@@ -60,6 +61,16 @@ const handleLogin = async (event) => {
     }
     // const response = await fetch("https://marctest11.github.io/login_template/cal_pmt.html");
     // const templateText = await response.text();
+=======
+    const response = await fetch("https://marctest11.github.io/login_template/cal_pmt.html");
+    console.log(response)
+    const templateText = await response.text();
+    const tempContainer = document.createElement("div");
+    tempContainer.innerHTML = templateText;
+    const calculatorTemplate = tempContainer.querySelector(
+      "#calculator-template"
+    );
+>>>>>>> 6e2d70a147604bdd926a723ddbf07835e09ffda4
 
     if (calculatorTemplate) {
       mainContent.innerHTML = "";
