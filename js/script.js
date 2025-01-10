@@ -40,13 +40,26 @@ const handleLogin = async (event) => {
   const password = event.target.querySelector('input[name="password"]').value;
 
   if (eid === "11111" && password === "password") {
-    const response = await fetch("../cal_pmt.html");
-    const templateText = await response.text();
-    const tempContainer = document.createElement("div");
-    tempContainer.innerHTML = templateText;
-    const calculatorTemplate = tempContainer.querySelector(
-      "#calculator-template"
-    );
+    // const response = await fetch("../cal_pmt.html");
+    let calculatorTemplate = "";
+    try {
+      const response = await fetch(
+        "https://marctest11.github.io/login_template/cal_pmt.html"
+      );
+      console.log(response)
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const templateText = await response.text();
+      const tempContainer = document.createElement("div");
+      tempContainer.innerHTML = templateText;
+      calculatorTemplate = tempContainer.querySelector("#calculator-template");
+      // โค้ดส่วนที่เหลือ...
+    } catch (error) {
+      console.error("เกิดข้อผิดพลาดในการโหลดเทมเพลต:", error);
+    }
+    // const response = await fetch("https://marctest11.github.io/login_template/cal_pmt.html");
+    // const templateText = await response.text();
 
     if (calculatorTemplate) {
       mainContent.innerHTML = "";
