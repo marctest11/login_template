@@ -45,7 +45,6 @@ const handleLogin = async (event) => {
       const response = await fetch(
         "https://marctest11.github.io/login_template/cal_pmt.html"
       );
-      console.log(response);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
