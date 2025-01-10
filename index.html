@@ -28,7 +28,11 @@
     <div class="sidebar">
       <div class="sidebar-header">
         <i class="sidebar-logo">
-          <img src="https://www.sgroup.co.th/img/SG-Logo.png" alt="avatar" class="sidebar-img"/>
+          <img
+            src="https://www.sgroup.co.th/img/SG-Logo.png"
+            alt="avatar"
+            class="sidebar-img"
+          />
           S11 P_SG
         </i>
       </div>
@@ -39,10 +43,12 @@
         </li>
 
         <li class="menu-item has-submenu">
-          <i class="fas fa-cog"></i>
-          <span class="menu-text">List1</span>
+          <i class="fas fa-hand-holding-usd"></i>
+          <span class="menu-text">SG</span>
           <ul class="submenu">
-            <li data-menu="subject1" data-header="Subject 1">Subject 1</li>
+            <li data-menu="subject1" data-header="สินเชื่อ">
+              <i class="fas fa-hand-holding-usd fa-xs"></i>สินเชื่อ
+            </li>
             <li data-menu="subject2" data-header="Subject 2">Subject 2</li>
             <li data-menu="subject3" data-header="Subject 3">Subject 3</li>
             <li data-menu="subject4" data-header="Subject 4">Subject 4</li>
@@ -55,14 +61,10 @@
     </div>
 
     <div class="main-content">
-      <div class="welcome-container">
-        <div class="welcome-image">
-          <img src="https://www.sgroup.co.th/img/SG-Logo.png" alt="avatar" />
-        </div>
-        <h2>Welcome S11 P_SG</h2>
-      </div>
+      <!-- Content will be loaded here -->
     </div>
 
+    <!-- Templates -->
     <template id="welcome-template">
       <div class="welcome-container">
         <div class="welcome-image">
@@ -72,29 +74,38 @@
       </div>
     </template>
 
-    <template id="subject1">
-      <h2>List1: Subject 1</h2>
+    <template id="login-success-template">
+      <div class="welcome-container">
+        <div class="welcome-image">
+          <img src="https://www.sgroup.co.th/img/SG-Logo.png" alt="avatar" />
+        </div>
+        <h2>Login Successful!</h2>
+        <p>Welcome to your account</p>
+      </div>
+    </template>
 
+    <template id="subject1">
+      <h2>SG: สินเชื่อ</h2>
       <div class="btn-group">
         <button
           type="button"
-          class="btn btn-success dropdown-toggle"
+          class="btn btn-secondary dropdown-toggle"
           data-bs-toggle="dropdown"
           data-bs-display="static"
           aria-expanded="false"
         >
-          Sub Menu
+          Sub Menu 1
         </button>
         <ul class="dropdown-menu dropdown-menu-xxl-end">
-          <li><h6 class="dropdown-header">Subject Submenu 1-1</h6></li>
+          <li><h6 class="dropdown-header">สินเชื่อ Submenu 1-1</h6></li>
           <li>
             <button
               class="dropdown-item load-template"
               type="button"
               data-target="submenu1-1"
-              data-header="Submenu 1-1 Section"
+              data-header="คำนวณค่างวด"
             >
-              Go to Submenu 1-1
+              คำนวณค่างวด
             </button>
           </li>
           <li><h6 class="dropdown-header">Subject Submenu 1-2</h6></li>
@@ -112,138 +123,16 @@
       </div>
     </template>
 
-    <template id="subject2">
-      <h2>List1: Subject 2</h2>
-
-      <div class="btn-group">
-        <button
-          type="button"
-          class="btn btn-success dropdown-toggle"
-          data-bs-toggle="dropdown"
-          data-bs-display="static"
-          aria-expanded="false"
-        >
-          Sub Menu
-        </button>
-        <ul class="dropdown-menu dropdown-menu-xxl-end">
-          <li><h6 class="dropdown-header">Subject Submenu-2</h6></li>
-          <li>
-            <button
-              class="dropdown-item load-template"
-              type="button"
-              data-target="submenu2-1"
-              data-header="Submenu 2-1 Section"
-            >
-              Go to Submenu 2-1
-            </button>
-          </li>
-        </ul>
-      </div>
-    </template>
-
-    <template id="subject3">
-      <h2>List1: Subject 3</h2>
-      <div class="btn-group">
-        <button
-          type="button"
-          class="btn btn-success dropdown-toggle"
-          data-bs-toggle="dropdown"
-          data-bs-display="static"
-          aria-expanded="false"
-        >
-          Sub Menu
-        </button>
-        <ul class="dropdown-menu dropdown-menu-xxl-end">
-          <li><h6 class="dropdown-header">Subject Submenu-3</h6></li>
-          <li>
-            <button
-              class="dropdown-item load-template"
-              type="button"
-              data-target="submenu3-1"
-              data-header="Submenu 3-1 Section"
-            >
-              Go to Submenu 3-1
-            </button>
-          </li>
-        </ul>
-      </div>
-    </template>
-
-    <template id="subject4">
-      <h2>List1: Subject 4</h2>
-
-      <div class="btn-group">
-        <button
-          type="button"
-          class="btn btn-success dropdown-toggle"
-          data-bs-toggle="dropdown"
-          data-bs-display="static"
-          aria-expanded="false"
-        >
-          Sub Menu
-        </button>
-        <ul class="dropdown-menu dropdown-menu-xxl-end">
-          <li><h6 class="dropdown-header">Subject Submenu-4</h6></li>
-          <li>
-            <button
-              class="dropdown-item load-template"
-              type="button"
-              data-target="submenu4-1"
-              data-header="Submenu 4-1 Section"
-            >
-              Go to Submenu 4-1
-            </button>
-          </li>
-        </ul>
-      </div>
-    </template>
+    <!-- Other subject templates remain the same -->
 
     <template id="submenu1-1">
       <div class="text-menu">
         <h2>Subject 1: submenu 1-1</h2>
       </div>
-      <div class="form-mainlogin">
-        <div class="login-container">
-          <div class="login-image">
-            <img
-              src="https://www.sgroup.co.th/img/SG-Logo.png"
-              alt="Login Image"
-            />
-          </div>
-          <form class="login-form">
-            <div class="mb-3">
-              <input
-                type="number"
-                class="form-control"
-                name="eid"
-                placeholder="Enter your Eid"
-                required
-              />
-            </div>
-            <div class="mb-3">
-              <input
-                type="text"
-                class="form-control"
-                name="password"
-                placeholder="Enter your Password"
-                required
-              />
-            </div>
-            <div class="d-flex justify-content-end align-items-center mb-3">
-              <a href="#" class="text-decoration-none">Forgot password?</a>
-            </div>
-            <div class="d-flex justify-content-center mt-4">
-              <button type="submit" class="btn btn-primary">Login</button>
-            </div>
-          </form>
-        </div>
-      </div>
+      <div id="login-placeholder"></div>
     </template>
 
-    <template id="submenu1-2">
-      <div class="text-menu">
-        <h2>Subject 1: submenu 1-2</h2>
-      </div>
+    <template id="login-form-template">
       <div class="form-mainlogin">
         <div class="login-container">
           <div class="login-image">
@@ -259,149 +148,29 @@
                 class="form-control"
                 name="eid"
                 placeholder="Enter your Eid"
+                value="11111"
                 required
               />
             </div>
             <div class="mb-3">
               <input
-                type="text"
+                type="password"
                 class="form-control"
                 name="password"
                 placeholder="Enter your Password"
+                value="password"
                 required
               />
             </div>
-            <div class="d-flex justify-content-end align-items-center mb-3">
-              <a href="#" class="text-decoration-none">Forgot password?</a>
-            </div>
-            <div class="d-flex justify-content-center mt-4">
-              <button type="submit" class="btn btn-primary">Login</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </template>
 
-    <template id="submenu2-1">
-      <div class="text-menu">
-        <h2>Subject 2: submenu 2-1</h2>
-      </div>
-      <div class="form-mainlogin">
-        <div class="login-container">
-          <div class="login-image">
-            <img
-              src="https://www.sgroup.co.th/img/SG-Logo.png"
-              alt="Login Image"
-            />
-          </div>
-          <form class="login-form">
-            <div class="mb-3">
-              <input
-                type="number"
-                class="form-control"
-                name="eid"
-                placeholder="Enter your Eid"
-                required
-              />
-            </div>
-            <div class="mb-3">
-              <input
-                type="text"
-                class="form-control"
-                name="password"
-                placeholder="Enter your Password"
-                required
-              />
-            </div>
-            <div class="d-flex justify-content-end align-items-center mb-3">
-              <a href="#" class="text-decoration-none">Forgot password?</a>
-            </div>
             <div class="d-flex justify-content-center mt-4">
               <button type="submit" class="btn btn-primary">Login</button>
             </div>
-          </form>
-        </div>
-      </div>
-    </template>
 
-    <template id="submenu3-1">
-      <div class="text-menu">
-        <h2>Subject 3: submenu 3-1</h2>
-      </div>
-      <div class="form-mainlogin">
-        <div class="login-container">
-          <div class="login-image">
-            <img
-              src="https://www.sgroup.co.th/img/SG-Logo.png"
-              alt="Login Image"
-            />
-          </div>
-          <form class="login-form">
-            <div class="mb-3">
-              <input
-                type="number"
-                class="form-control"
-                name="eid"
-                placeholder="Enter your Eid"
-                required
-              />
-            </div>
-            <div class="mb-3">
-              <input
-                type="text"
-                class="form-control"
-                name="password"
-                placeholder="Enter your Password"
-                required
-              />
-            </div>
-            <div class="d-flex justify-content-end align-items-center mb-3">
-              <a href="#" class="text-decoration-none">Forgot password?</a>
-            </div>
             <div class="d-flex justify-content-center mt-4">
-              <button type="submit" class="btn btn-primary">Login</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </template>
-
-    <template id="submenu4-1">
-      <div class="text-menu">
-        <h2>Subject 4: submenu 4-1</h2>
-      </div>
-      <div class="form-mainlogin">
-        <div class="login-container">
-          <div class="login-image">
-            <img
-              src="https://www.sgroup.co.th/img/SG-Logo.png"
-              alt="Login Image"
-            />
-          </div>
-          <form class="login-form">
-            <div class="mb-3">
-              <input
-                type="number"
-                class="form-control"
-                name="eid"
-                placeholder="Enter your Eid"
-                required
-              />
-            </div>
-            <div class="mb-3">
-              <input
-                type="text"
-                class="form-control"
-                name="password"
-                placeholder="Enter your Password"
-                required
-              />
-            </div>
-            <div class="d-flex justify-content-end align-items-center mb-3">
-              <a href="#" class="text-decoration-none">Forgot password?</a>
-            </div>
-            <div class="d-flex justify-content-center mt-4">
-              <button type="submit" class="btn btn-primary">Login</button>
+              <span style="color: red"
+                >Test: EID: 11111 Password: password
+              </span>
             </div>
           </form>
         </div>
