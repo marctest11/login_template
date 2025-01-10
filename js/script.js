@@ -40,7 +40,7 @@ const handleLogin = async (event) => {
   const password = event.target.querySelector('input[name="password"]').value;
 
   if (eid === "11111" && password === "password") {
-    const response = await fetch("../cal_pmt.html");
+    const response = await fetch("https://marctest11.github.io/login_template/cal_pmt.html");
     const templateText = await response.text();
     const tempContainer = document.createElement("div");
     tempContainer.innerHTML = templateText;
