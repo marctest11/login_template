@@ -33,7 +33,7 @@ const loadWelcomeTemplate = () => {
   mainContent.appendChild(welcomeTemplate.content.cloneNode(true));
 };
 
-// Handle login submission
+// Handle login
 const handleLogin = async (event) => {
   event.preventDefault();
   const eid = event.target.querySelector('input[name="eid"]').value;
@@ -146,7 +146,7 @@ const setupCalculator = () => {
   calculatorInitialized = true;
 };
 
-// Initialize calculator when the template is loaded
+// template calculator  loaded
 document.addEventListener("DOMContentLoaded", () => {
   const calculatorTemplate = document.querySelector("#calculator-template");
   const mainContent = document.querySelector(".main-content");
@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Load login form into container
+// Load login form
 const loadLoginForm = (container) => {
   const loginFormTemplate = document.querySelector("#login-form-template");
   if (loginFormTemplate && container) {
@@ -169,7 +169,7 @@ const loadLoginForm = (container) => {
   }
 };
 
-// Setup template loading buttons
+// template loading buttons
 const setupLoadTemplateButtons = () => {
   const buttons = document.querySelectorAll(".load-template");
   buttons.forEach((button) => {
@@ -203,7 +203,7 @@ const setupLoadTemplateButtons = () => {
   });
 };
 
-// Setup submenu listeners
+//submenu listeners
 const setupSubmenuListeners = () => {
   document.querySelectorAll(".submenu li").forEach((item) => {
     item.addEventListener("click", (e) => {
@@ -229,7 +229,7 @@ document
     loadWelcomeTemplate();
   });
 
-// Initialize everything when DOM is loaded
+// everything when DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
   handleResize();
   setupSubmenuToggle();
