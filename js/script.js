@@ -42,9 +42,11 @@ const handleLogin = async (event) => {
   if (eid === "11111" && password === "password") {
     let calculatorTemplate = "";
     try {
-      const response = await fetch(
-        "https://marctest11.github.io/login_template/cal_pmt.html"
-      );
+      // const response = await fetch(
+      //   "https://marctest11.github.io/login_template/cal_pmt.html"
+      // );
+
+      const response = await fetch("../page/cal_pmt.html");
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -59,6 +61,30 @@ const handleLogin = async (event) => {
     if (calculatorTemplate) {
       mainContent.innerHTML = "";
       mainContent.appendChild(calculatorTemplate.content.cloneNode(true));
+
+      const rangeInput = document.getElementById("installmentMonths");
+      const monthValue = document.getElementById("monthValue");
+
+      const loanTypeSelect = document.getElementById("loanType");
+
+      const interestRateInput = document.getElementById("interestRate");
+
+      if (rangeInput && monthValue) {
+        monthValue.textContent = rangeInput.value; 
+        rangeInput.addEventListener("input", () => {
+          monthValue.textContent = rangeInput.value;
+        });
+      }
+
+      loanTypeSelect.addEventListener("change", () => {
+        if (loanTypeSelect.value === "1") {
+          interestRateInput.value = 23;
+        } else if (loanTypeSelect.value === "2") {
+          interestRateInput.value = 24;
+        } else {
+          interestRateInput.value = interestRateInput;
+        }
+      });
       setupCalculator();
     } else {
       console.error("ไม่สามารถเรียกหน้านี้ได้");
@@ -80,11 +106,21 @@ const setupCalculator = () => {
       maximumFractionDigits: 2,
     }).format(value);
 
-  const calculateNF = (amount, months, rate, vat) => {
+  const calculateNF = (amount, months, rate, vat, down) => {
+    // console.log(down);
     const vatMultiplier = 1 + vat / 100;
+
+    if (down !== 0) {
+      amount = amount - down;
+      // console.log(amount);
+    }
+    // console.log(`amt ${amount}`);
     const installmentWithVat = parseInt(
       amount / ((1 - 1 / Math.pow(1 + rate, months)) / rate)
     );
+    // console.log(rate);
+    // console.log(vatMultiplier);
+    // console.log(installmentWithVat);
     const loanNoVat = amount / vatMultiplier;
     const installmentNoVat = parseFloat(
       (installmentWithVat / vatMultiplier).toFixed(2)
@@ -100,6 +136,7 @@ const setupCalculator = () => {
       Vat: numberFormat(vatAmount),
       CustomerLoan: numberFormat(customerLoan),
       FeeLoan: numberFormat(feeLoan),
+      Down: numberFormat(down),
     };
   };
 
@@ -112,33 +149,48 @@ const setupCalculator = () => {
     );
 
     const loanType = document.getElementById("loanType").value;
+    const ratecustom = document.getElementById("interestRate").value;
+    const down = document.getElementById("downPayment").value;
+
+    console.log(`down ${down}`);
 
     if (!loanType) {
       alert("Please select a loan type.");
       return;
     }
 
-    const loanData =
-      loanType === "1"
-        ? { Name: "Loan", InRate: 23 / 12 / 100, Vat: 7 }
-        : { Name: "P-loan", InRate: 24 / 12 / 100, Vat: 0 };
+    let loanData;
+    let textloan;
+    if (loanType === "1" && ratecustom === "23") {
+      loanData = { Name: "Loan", InRate: 23 / 12 / 100, Vat: 7 };
+      textloan = "ยอดกู้ไม่รวม VAT: ";
+    } else if (loanType === "2" && ratecustom === "24") {
+      loanData = { Name: "P-loan", InRate: 24 / 12 / 100, Vat: 0 };
+      textloan = "ยอดกู้รวม VAT: ";
+    } else {
+      loanData = { Name: "Custom", InRate: ratecustom / 12 / 100, Vat: 0 };
+      textloan = "ยอดกู้ไม่รวม VAT: ";
+    }
 
     const results = calculateNF(
       nfAmount,
       installmentMonths,
       loanData.InRate,
-      loanData.Vat
+      loanData.Vat,
+      down
     );
 
     document.getElementById("loanTypeResult").textContent = loanData.Name;
     document.getElementById("installmentWithVat").textContent =
       results.InstallmentWithVat;
-    document.getElementById("loanNoVat").textContent = results.LoanNoVat;
+    document.getElementById("loanNoVat").textContent =
+      textloan + results.LoanNoVat;
     document.getElementById("installmentNoVat").textContent =
       results.InstallmentNoVat;
     document.getElementById("vat").textContent = results.Vat;
     document.getElementById("customerLoan").textContent = results.CustomerLoan;
     document.getElementById("feeLoan").textContent = results.FeeLoan;
+    document.getElementById("payDown").textContent = results.Down;
 
     document.getElementById("results").style.display = "block";
   });
@@ -159,16 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Load login form
-// const loadLoginForm = (container) => {
-//   const loginFormTemplate = document.querySelector("#login-form-template");
-//   console.log(loginFormTemplate)
-//   if (loginFormTemplate && container) {
-//     const loginFormClone = loginFormTemplate.content.cloneNode(true);
-//     const form = loginFormClone.querySelector(".login-form");
-//     form.addEventListener("submit", handleLogin);
-//     container.appendChild(loginFormClone);
-//   }
-// };
+
 const loadLoginForm = async (container) => {
   try {
     const response = await fetch("../page/login.html");

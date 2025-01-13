@@ -60,7 +60,7 @@ body {
 .sidebar.collapsed .logo {
     margin: 0 auto;
     width: 30px;
-  
+
 }
 
 
@@ -331,6 +331,12 @@ body {
 
 .collapsed+.main-content {
     margin-left: var(--sidebar-collapsed-width);
+}
+
+#monthValue {
+    font-weight: bold;
+    color: #015c0d;
+    margin-left: 5px;
 }
 
 /*  Media Queries */
