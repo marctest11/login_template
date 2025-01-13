@@ -42,11 +42,11 @@ const handleLogin = async (event) => {
   if (eid === "11111" && password === "password") {
     let calculatorTemplate = "";
     try {
-      // const response = await fetch(
-      //   "https://marctest11.github.io/login_template/cal_pmt.html"
-      // );
+      const response = await fetch(
+        "https://marctest11.github.io/login_template/page/cal_pmt.html"
+      );
 
-      const response = await fetch("../page/cal_pmt.html");
+      // const response = await fetch("../page/cal_pmt.html");
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -70,7 +70,7 @@ const handleLogin = async (event) => {
       const interestRateInput = document.getElementById("interestRate");
 
       if (rangeInput && monthValue) {
-        monthValue.textContent = rangeInput.value; 
+        monthValue.textContent = rangeInput.value;
         rangeInput.addEventListener("input", () => {
           monthValue.textContent = rangeInput.value;
         });
@@ -152,7 +152,7 @@ const setupCalculator = () => {
     const ratecustom = document.getElementById("interestRate").value;
     const down = document.getElementById("downPayment").value;
 
-    console.log(`down ${down}`);
+    // console.log(`down ${down}`);
 
     if (!loanType) {
       alert("Please select a loan type.");
@@ -214,10 +214,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const loadLoginForm = async (container) => {
   try {
-    const response = await fetch("../page/login.html");
+    // const response = await fetch("../page/login.html");
+    const response = await fetch(
+      "https://marctest11.github.io/login_template/page/login.html"
+    );
     // console.log(response)
     if (!response.ok) {
-      throw new Error("Failed to load login form template");
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
 
     const htmlText = await response.text();
