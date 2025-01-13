@@ -146,11 +146,12 @@ body {
     max-height: 0;
     overflow: hidden;
     transition: max-height var(--transition-speed) ease;
-    background: rgba(0, 0, 0, 0.1);
+    /* background: rgba(0, 0, 0, 0.1); */
 }
 
 .submenu.active {
     max-height: 200px;
+    overflow: visible;
 }
 
 .submenu li {

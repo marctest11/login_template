@@ -19,7 +19,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://marctest11.github.io/login_template/css/styles.css" />
+    <!-- <link rel="stylesheet" href="https://marctest11.github.io/login_template/css/styles.css" /> -->
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
     <header class="header">
@@ -49,9 +50,12 @@
             <li data-menu="subject1" data-header="สินเชื่อ">
               <i class="fas fa-hand-holding-usd fa-xs"></i>สินเชื่อ
             </li>
-            <li data-menu="subject2" data-header="Subject 2">Subject 2</li>
-            <li data-menu="subject3" data-header="Subject 3">Subject 3</li>
-            <li data-menu="subject4" data-header="Subject 4">Subject 4</li>
+            <li data-menu="subject2" data-header="บริหารลูกหนี้">บริหารลูกหนี้</li>
+            <li data-menu="subject3" data-header="บุคคล/ธุรการ">บุคคล/ธุรการ</li>
+            <li data-menu="subject4" data-header="การเงิน">การเงิน</li>
+            <li data-menu="subject5" data-header="กิจการสาขา">กิจการสาขา</li>
+            <li data-menu="subject6" data-header="ปฎิบัติการ">ปฎิบัติการ</li>
+            <li data-menu="subject7" data-header="พนักงาน">พนักงาน</li>
           </ul>
         </li>
       </ul>
@@ -74,15 +78,7 @@
       </div>
     </template>
 
-    <template id="login-success-template">
-      <div class="welcome-container">
-        <div class="welcome-image">
-          <img src="https://www.sgroup.co.th/img/SG-Logo.png" alt="avatar" />
-        </div>
-        <h2>Login Successful!</h2>
-        <p>Welcome to your account</p>
-      </div>
-    </template>
+    
 
     <template id="subject1">
       <h2>SG: สินเชื่อ</h2>
@@ -132,50 +128,8 @@
       <div id="login-placeholder"></div>
     </template>
 
-    <template id="login-form-template">
-      <div class="form-mainlogin">
-        <div class="login-container">
-          <div class="login-image">
-            <img
-              src="https://www.sgroup.co.th/img/SG-Logo.png"
-              alt="Login Image"
-            />
-          </div>
-          <form class="login-form">
-            <div class="mb-3">
-              <input
-                type="number"
-                class="form-control"
-                name="eid"
-                placeholder="Enter your Eid"
-                value="11111"
-                required
-              />
-            </div>
-            <div class="mb-3">
-              <input
-                type="password"
-                class="form-control"
-                name="password"
-                placeholder="Enter your Password"
-                value="password"
-                required
-              />
-            </div>
-
-            <div class="d-flex justify-content-center mt-4">
-              <button type="submit" class="btn btn-primary">Login</button>
-            </div>
-
-            <div class="d-flex justify-content-center mt-4">
-              <span style="color: red"
-                >Test: EID: 11111 Password: password
-              </span>
-            </div>
-          </form>
-        </div>
-      </div>
-    </template>
+    
   </body>
-  <script src="https://marctest11.github.io/login_template/js/script.js"></script>
+  <!-- <script src="https://marctest11.github.io/login_template/js/script.js"></script> -->
+  <script src="js/script.js"></script>
 </html>

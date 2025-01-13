@@ -159,13 +159,38 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Load login form
-const loadLoginForm = (container) => {
-  const loginFormTemplate = document.querySelector("#login-form-template");
-  if (loginFormTemplate && container) {
-    const loginFormClone = loginFormTemplate.content.cloneNode(true);
-    const form = loginFormClone.querySelector(".login-form");
-    form.addEventListener("submit", handleLogin);
-    container.appendChild(loginFormClone);
+// const loadLoginForm = (container) => {
+//   const loginFormTemplate = document.querySelector("#login-form-template");
+//   console.log(loginFormTemplate)
+//   if (loginFormTemplate && container) {
+//     const loginFormClone = loginFormTemplate.content.cloneNode(true);
+//     const form = loginFormClone.querySelector(".login-form");
+//     form.addEventListener("submit", handleLogin);
+//     container.appendChild(loginFormClone);
+//   }
+// };
+const loadLoginForm = async (container) => {
+  try {
+    const response = await fetch("../page/login.html");
+    // console.log(response)
+    if (!response.ok) {
+      throw new Error("Failed to load login form template");
+    }
+
+    const htmlText = await response.text();
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = htmlText;
+
+    const loginFormTemplate = tempDiv.querySelector("#login-form-template");
+
+    if (loginFormTemplate && container) {
+      const loginFormClone = loginFormTemplate.content.cloneNode(true);
+      const form = loginFormClone.querySelector(".login-form");
+      form.addEventListener("submit", handleLogin);
+      container.appendChild(loginFormClone);
+    }
+  } catch (error) {
+    console.error("Error loading login form:", error);
   }
 };
 

@@ -1,0 +1,55 @@
+<template id="login-form-template">
+    <div class="form-mainlogin">
+      <div class="login-container">
+        <div class="login-image">
+          <img
+            src="https://www.sgroup.co.th/img/SG-Logo.png"
+            alt="Login Image"
+          />
+        </div>
+        <form class="login-form">
+          <div class="mb-3">
+            <input
+              type="number"
+              class="form-control"
+              name="eid"
+              placeholder="Enter your Eid"
+              value="11111"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              placeholder="Enter your Password"
+              value="password"
+              required
+            />
+          </div>
+
+          <div class="d-flex justify-content-center mt-4">
+            <button type="submit" class="btn btn-primary">Login</button>
+          </div>
+
+          <div class="d-flex justify-content-center mt-4">
+            <span style="color: red"
+              >Test: EID: 11111 Password: password
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </template>
+
+
+  <template id="login-success-template">
+    <div class="welcome-container">
+      <div class="welcome-image">
+        <img src="https://www.sgroup.co.th/img/SG-Logo.png" alt="avatar" />
+      </div>
+      <h2>Login Successful!</h2>
+      <p>Welcome to your account</p>
+    </div>
+  </template>
