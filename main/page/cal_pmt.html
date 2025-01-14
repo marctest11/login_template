@@ -1,0 +1,117 @@
+<template id="calculator-template">
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">คำนวนค่างวด</h1>
+    <div class="row">
+      <!-- Form Section (Left) -->
+      <div class="col-md-6">
+        <div class="card mt-3">
+          <div class="card-body">
+            <form id="irrForm">
+              <div class="mb-3 d-flex align-items-center justify-content-between">
+                <!-- ยอดกู้ -->
+                <div class="me-3 flex-grow-1">
+                  <label for="nfAmount" class="form-label">ยอดกู้ (NF):</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="nfAmount"
+                    min="0.01"
+                    step="0.01"
+                    placeholder="ยอดกู้ (NF)"
+                    required
+                  />
+                </div>
+
+                <!-- ดาวน์ -->
+                <div class="ms-3 flex-grow-1">
+                  <label for="downPayment" class="form-label">ดาวน์:</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="downPayment"
+                    min="0"
+                    step="0.01"
+                    value="0"
+                    placeholder="ยอดดาวน์"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="installmentMonths" class="form-label">
+                  จำนวนเดือน (Months):
+                  <span id="monthValue" class="badge text-bg-success">1</span>
+                </label>
+                <input
+                  type="range"
+                  class="form-range"
+                  id="installmentMonths"
+                  min="1"
+                  max="36"
+                  value="1"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">ประเภทสินเชื่อ:</label>
+                <select class="form-select" id="loanType" required>
+                  <option value="" selected disabled>เลือก ประเภทสินเชื่อ</option>
+                  <option value="1">สินเชื่อเช่าซื้อ (Loan)</option>
+                  <option value="2">สินเชื่อหมุนล้อ (P-loan)</option>
+                </select>
+              </div>
+
+              <div class="mb-3" id="interestInputContainer">
+                <label for="interestRate" class="form-label">ดอกเบี้ย (%):</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="interestRate"
+                  min="0"
+                  max="24.0"
+                  step="0.01"
+                  placeholder="กรอกดอกเบี้ย"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">คำนวณ</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Section (Right) -->
+      <div class="col-md-6" id="results" style="display: none">
+        <div class="card mt-3">
+          <div class="card-body">
+            <h3>ผลลัพธ์</h3>
+            <ul class="list-group">
+              <li class="list-group-item">
+                ประเภทสินเชื่อ: <span id="loanTypeResult"></span>
+              </li>
+              <li class="list-group-item">
+                <span id="loanNoVat"></span>
+              </li>
+              <li class="list-group-item">ดาวน์: <span id="payDown"></span></li>
+              <li class="list-group-item">
+                ค่างวดรวม VAT: <span id="installmentWithVat"></span>
+              </li>
+
+              <li class="list-group-item">
+                ค่างวดไม่รวม VAT: <span id="installmentNoVat"></span>
+              </li>
+
+              <li class="list-group-item">VAT: <span id="vat"></span></li>
+              <li class="list-group-item">
+                ลูกหนี้เช่าซื้อ: <span id="customerLoan"></span>
+              </li>
+              <li class="list-group-item">
+                ค่าธรรมเนี่ยเช่าซื้อ: <span id="feeLoan"></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
