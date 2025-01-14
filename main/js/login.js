@@ -16,11 +16,11 @@ export const handleLogin = async (event, mainContent) => {
     });
     let calculatorTemplate = "";
     try {
-      // const response = await fetch(
-      //   "https://marctest11.github.io/login_template/page/cal_pmt.html"
-      // );
+      const response = await fetch(
+        "https://marctest11.github.io/login_template/main/page/cal_pmt.html"
+      );
 
-      const response = await fetch("../../main/page/cal_pmt.html");
+      // const response = await fetch("../../main/page/cal_pmt.html");
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }

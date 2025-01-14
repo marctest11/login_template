@@ -39,10 +39,10 @@ const loadWelcomeTemplate = () => {
 
 const loadLoginForm = async (container) => {
   try {
-    const response = await fetch("../../main/page/login.html");
-    // const response = await fetch(
-    //   "https://marctest11.github.io/login_template/page/login.html"
-    // );
+    // const response = await fetch("../../main/page/login.html");
+    const response = await fetch(
+      "https://marctest11.github.io/login_template/main/page/login.html"
+    );
     // console.log(response)
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
