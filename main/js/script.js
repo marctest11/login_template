@@ -1,4 +1,5 @@
 import { handleLogin } from "./login.js";
+import { fetchCovidData } from "./covidAPI.js";
 
 const collapseToggle = document.querySelector(".collapse-toggle");
 const sidebar = document.querySelector(".sidebar");
@@ -68,6 +69,78 @@ const loadLoginForm = async (container) => {
   }
 };
 
+const loadCovidForm = async (container) => {
+  try {
+    const response = await fetch("../../main/page/covid_19.html");
+    console.log(response);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const htmlText = await response.text();
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = htmlText;
+
+    const CovidTemplate = tempDiv.querySelector("#covidTemplate");
+    if (CovidTemplate && container) {
+      const covidClone = CovidTemplate.content.cloneNode(true);
+      const form = covidClone.querySelector(".container");
+      const tableBody = covidClone.querySelector("tbody");
+      // form.addEventListener("submit", handleLogin);
+      form.addEventListener("submit", (event) =>
+        handleLogin(event, mainContent)
+      );
+      container.appendChild(covidClone);
+      const data = await fetchCovidData();
+      populateCovidTable(tableBody, data);
+    }
+  } catch (error) {
+    console.error("Error loading login form:", error);
+  }
+};
+
+const populateCovidTable = (tableBody, data) => {
+  tableBody.innerHTML = ""; // ล้างข้อมูลใน tbody
+  data.forEach((item, index) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${index + 1}</td>
+      <td>${item.province}</td>
+      <td>${item.new_case.toLocaleString()}</td>
+      <td>${item.total_case.toLocaleString()}</td>
+      <td>${item.new_death.toLocaleString()}</td>
+      <td>${item.total_death.toLocaleString()}</td>
+      <td>${new Date(item.update_date).toLocaleString()}</td>
+    `;
+    tableBody.appendChild(row);
+  });
+
+  // เรียกใช้ DataTable หลังจากเพิ่มข้อมูล
+  $("#covidTable").DataTable({
+    paging: true,
+    searching: true,
+    ordering: true,
+    info: true,
+  });
+};
+
+// const populateCovidTable = (tableBody, data) => {
+//   tableBody.innerHTML = ""; // ล้างข้อมูลใน tbody
+//   data.forEach((item, index) => {
+//     const row = document.createElement("tr");
+//     row.innerHTML = `
+//      <td>${index + 1}</td>
+//       <td>${item.province}</td>
+//       <td>${item.new_case.toLocaleString()}</td>
+//       <td>${item.total_case.toLocaleString()}</td>
+//       <td>${item.new_death.toLocaleString()}</td>
+//       <td>${item.total_death.toLocaleString()}</td>
+//       <td>${new Date(item.update_date).toLocaleString()}</td>
+//     `;
+//     tableBody.appendChild(row);
+//   });
+// };
+
 // template loading buttons
 const setupLoadTemplateButtons = () => {
   const buttons = document.querySelectorAll(".load-template");
@@ -92,8 +165,14 @@ const setupLoadTemplateButtons = () => {
 
         const loginPlaceholder =
           mainContent.querySelector("#login-placeholder");
+
+        const covid19 = mainContent.querySelector("#covid_19");
         if (loginPlaceholder) {
           loadLoginForm(loginPlaceholder);
+        }
+
+        if (covid19) {
+          loadCovidForm(covid19);
         }
 
         setupLoadTemplateButtons();

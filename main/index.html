@@ -24,6 +24,13 @@
       rel="stylesheet"
       href="https://marctest11.github.io/login_template/main/css/styles.css"
     />
+
+    <!-- DataTables CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css"
+    />
     <!-- <link rel="stylesheet" href="css/styles.css" /> -->
   </head>
   <body>
@@ -85,7 +92,7 @@
     </div>
 
     <div class="main-content">
-      <!-- Content will be loaded here -->
+      <!-- Content loaded -->
     </div>
 
     <!-- Templates -->
@@ -128,9 +135,9 @@
               class="dropdown-item load-template"
               type="button"
               data-target="submenu1-2"
-              data-header="Submenu 1-2 Section"
+              data-header=""
             >
-              Go to Submenu 1-2
+              Covid-19
             </button>
           </li>
         </ul>
@@ -145,11 +152,28 @@
       </div>
       <div id="login-placeholder"></div>
     </template>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <template id="submenu1-2">
+      <div class="text-menu">
+        <h2>Subject 1: submenu 1-2</h2>
+      </div>
+      <div id="covid_19"></div>
+    </template>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- DataTables JS -->
     <script
+      type="text/javascript"
+      charset="utf8"
+      src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"
+    ></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- <script
       type="module"
       src="https://marctest11.github.io/login_template/main/js/script.js"
-    ></script>
-    <!-- <script type="module" src="js/script.js"></script> -->
+    ></script> -->
+    <script type="module" src="js/script.js"></script>
   </body>
 </html>
